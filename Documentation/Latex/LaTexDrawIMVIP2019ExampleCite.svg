@@ -1,0 +1,114 @@
+<?xml version="1.1" encoding="windows-1252"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:latexdraw="http://latexdraw.sourceforge.net/namespaces/latexdraw"
+    version="1.1" baseProfile="full">
+    <g>
+        <g latexdraw:type="rectangle" id="id178848528">
+            <rect x="187.66666666666663" y="181.0"
+                width="197.9999999999999" height="78.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id1068816657">
+            <polyline
+                points="462.1052631578948,219.0 385.2631578947369,219.0 385.2631578947369,219.0 "
+                stroke-width="2.0" stroke="black" fill="none"
+                latexdraw:rotationAngle="0.0" marker-start="url(#arrow0-1068816657)"/>
+        </g>
+        <g latexdraw:type="joinedLines" id="id139683231">
+            <polyline points="188.0,220.0 124.0,220.0 124.0,220.0 "
+                stroke-width="2.0" stroke="black" fill="none"
+                latexdraw:rotationAngle="0.0" marker-start="url(#arrow0-139683231)"/>
+        </g>
+        <g latexdraw:type="text" id="id2012011560" fill="black" latexdraw:position="bl">
+            <text x="104.0" y="222.0">$x$</text>
+        </g>
+        <g latexdraw:type="text" id="id1515893160" fill="black" latexdraw:position="bl">
+            <text x="482.0" y="225.0">$\tilde{y}$</text>
+        </g>
+        <g latexdraw:type="text" id="id1101905201" fill="black" latexdraw:position="bl">
+            <text x="224.0" y="236.0">$\mathcal{M}$achine $\tilde{y}=\phi_{\theta}(x)$</text>
+        </g>
+        <g latexdraw:type="text" id="id1882448316" fill="black" latexdraw:position="bl">
+            <text x="500.0" y="123.33">Ideal output </text>
+        </g>
+        <g latexdraw:type="text" id="id966983402" fill="black" latexdraw:position="bl">
+            <text x="621.33" y="130.0"> $y$</text>
+        </g>
+        <g latexdraw:type="text" id="id361734197" fill="black" latexdraw:position="bl">
+            <text x="453.3333333333333" y="266.66666666666663">Machine output</text>
+        </g>
+        <g latexdraw:type="text" id="id2090429371" fill="black" latexdraw:position="bl">
+            <text x="60.0" y="266.66666666666663">Machine input</text>
+        </g>
+        <g latexdraw:type="circle" id="id526439452">
+            <circle cx="626.6666666666666" cy="120.0" r="19.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="circle" id="id1763396369">
+            <circle cx="486.66666666666663" cy="220.0" r="19.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="circle" id="id1849593977">
+            <circle cx="106.66666666666663" cy="220.0" r="19.0"
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"/>
+        </g>
+        <g latexdraw:type="arc" id="id2128559842" transform="rotate(136.28771985754707) translate(-1004.595835711428 -802.9519181342339)">
+            <path
+                d="M 806.6666666666665 200.0 A 143.33333333333331 143.33333333333331 0.0 1 0 663.3333333333333 343.3333333333333 "
+                latexdraw:borderPos="outer" stroke-width="2.0"
+                stroke="black" fill="none"
+                latexdraw:rotationAngle="2.378669441549854"
+                marker-start="url(#arrow0-2128559842)" marker-end="url(#arrow1-2128559842)"/>
+        </g>
+        <g latexdraw:type="text" id="id91083164" fill="black" latexdraw:position="bl">
+            <text x="580.0" y="220.0">See \cite{RzDIMVIP2019} for more information</text>
+        </g>
+    </g>
+    <defs>
+        <marker overflow="visible" orient="auto" id="arrow0-1068816657">
+            <path
+                d="M 0.0 0.0 L 4.652083333333334 1.6614583333333335 L 4.652083333333334 0.0 L 4.652083333333334 -1.6614583333333335 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <marker overflow="visible" orient="auto" id="arrow0-139683231">
+            <path
+                d="M 0.0 0.0 L 4.652083333333334 1.6614583333333335 L 4.652083333333334 0.0 L 4.652083333333334 -1.6614583333333335 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <marker overflow="visible" orient="auto" id="arrow0-2128559842">
+            <path
+                d="M 0.0 0.0 L 4.652083333333334 1.6614583333333335 L 4.652083333333334 0.0 L 4.652083333333334 -1.6614583333333335 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+        <marker overflow="visible" orient="auto" id="arrow1-2128559842">
+            <path
+                d="M 0.0 0.0 L -4.652083333333334 1.6614583333333335 L -4.652083333333334 0.0 L -4.652083333333334 -1.6614583333333335 z "
+                latexdraw:arrSizeNum="2.0" fill="black"/>
+        </marker>
+    </defs>
+    <metadata>
+        <latexdraw:metadata>
+            <latexdraw:latexIncludes/>
+            <latexdraw:displayXScale>true</latexdraw:displayXScale>
+            <latexdraw:displayYScale>true</latexdraw:displayYScale>
+            <latexdraw:unit>CM</latexdraw:unit>
+            <latexdraw:zoom>1.5</latexdraw:zoom>
+            <latexdraw:magneticGridStyle>CUSTOMISED</latexdraw:magneticGridStyle>
+            <latexdraw:gridGap>20</latexdraw:gridGap>
+            <latexdraw:magneticGrid>true</latexdraw:magneticGrid>
+            <latexdraw:version>3.3.9</latexdraw:version>
+            <latexdraw:size>
+                <latexdraw:width>1936</latexdraw:width>
+                <latexdraw:height>1176</latexdraw:height>
+            </latexdraw:size>
+            <latexdraw:position>
+                <latexdraw:x>-8.0</latexdraw:x>
+                <latexdraw:y>-8.0</latexdraw:y>
+            </latexdraw:position>
+        </latexdraw:metadata>
+    </metadata>
+</svg>
