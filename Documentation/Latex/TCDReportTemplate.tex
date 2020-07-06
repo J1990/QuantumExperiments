@@ -409,11 +409,17 @@ Quantum algorithms are depicted using the circuit model of computation. A quantu
 
 \noindent Figure \ref{fig:qCircEx} shows the composition of a quantum circuit. Two qubits \(q_0\) and \(q_1\) of the quantum register are prepared in the \(\ket{0}\) basis state. The qubit \(q_0\) is passed through the quantum wire across the X and Hadamard gates, whereas the qubit \(q_1\) is passed through the quantum wire across the Hadamard gate. The 2-qubit CNOT gate uses \(q_0\) as the control qubit and works on the target qubit \(q_1\). Finally both the qubits are measured on the classical channel c5. After the measurement, the state of each of the qubits collapses to the computational basis state. More complex circuits can be built in similar way to realize various quantum algorithms which can utilize quantum properties such as superposition and entanglement.
 
-\section{Quantum Applications}
-\label{sec:qApps}
+\section{Quantum Computing - Hype and Promises}
+\label{sec:qHype}
+The Deutsch-Jozsa algorithm was one of the first algorithms which showed that the quantum computers can be used to achieve exponential speedups using quantum parallelism over the best known classical algorithms. Shor's prime factoring algorithm was a catalyst for the growing interest in quantum computing and quantum cryptography. It makes use of the efficiency of quantum fourier transform to find prime factors of given number N in polynomial time. No known classical algorithm exists that can acheive the same task polynomially even on best super computers. Grover's search algorithm provides quadratic speed improvement for searching a database with unsorted entries.\\
+
+\noindent Currently available quantum computers are still in early stages of development and thus restrict the practical verification of many theoretical algorithms which claim quantum supremacy. Furthermore, these machines are prone to errors due to environmental interference and decoherence, which is an active area of research in the field of quantum computation. However, steady growth of number of qubits and power of quantum computers, cloud access to physical systems and arrival of various software development kits for programmers all around the world to develop and test new algorithms, are some of the encouraging factors for research in this area.\\
+
+\noindent The no-cloning theorem of quantum bits states that quantum information stored in one qubit can not be copied to another qubit without altering the state of the original qubit. This phenomenon has implications in the field of quantum cryptography and future of data security. Quantum chemistry is a major field of research as quantum computers can simulate quantum systems efficiently. Classical computers require exponentially increasing resources for simulation of such quantum information. Multiple companies have recognized the vast potential of quantum computers and are investing heavily in the field. Quantum machine learning, image processing, data analysis are few more fields that are gaining interest from scholars all around the globe.
 
 \section{Quantum Machine Learning}
 \label{sec:qml}
+
 
 \section{Quantum Data Classification}
 \label{sec:qmlDataClass}
