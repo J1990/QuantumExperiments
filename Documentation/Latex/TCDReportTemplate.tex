@@ -119,7 +119,7 @@
 \begin{titlepage}
 	\centering
 	
-\includegraphics[width=.8\linewidth]{trinity-common-use.jpg}\par\vspace{2cm}
+\includegraphics[width=.8\linewidth]{Images/trinity-common-use.jpg}\par\vspace{2cm}
 % * <dahyotr@tcd.ie> 2018-02-02T15:45:10.514Z:
 %
 % ^.
@@ -195,7 +195,8 @@ To be completed.
 
 \chapter{Introduction} 
 
-To be completed.
+\section{Motivation}
+\section{Research Question}
 
 
 
@@ -402,7 +403,7 @@ Quantum algorithms are depicted using the circuit model of computation. A quantu
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{quantumCircuitExample.png}
+    \includegraphics[scale=0.7]{Images/quantumCircuitExample.png}
     \caption{An example of quantum circuit visualized using IBMQ circuit composer}
     \label{fig:qCircEx}
 \end{figure}
@@ -417,12 +418,114 @@ The Deutsch-Jozsa algorithm was one of the first algorithms which showed that th
 
 \noindent The no-cloning theorem of quantum bits states that quantum information stored in one qubit can not be copied to another qubit without altering the state of the original qubit. This phenomenon has implications in the field of quantum cryptography and future of data security. Quantum chemistry is a major field of research as quantum computers can simulate quantum systems efficiently. Classical computers require exponentially increasing resources for simulation of such quantum information. Multiple companies have recognized the vast potential of quantum computers and are investing heavily in the field. Quantum machine learning, image processing, data analysis are few more fields that are gaining interest from scholars all around the globe.
 
-\section{Quantum Machine Learning}
-\label{sec:qml}
+\section{Introduction to Quantum Algorithms}
+\label{sec:qAlgo}
+As discussed in previous sections a quantum algorithm can be described using a quantum circuit consisting of qubits prepared in the desired state, gates acting on the state vector of the qubits and measurement operations in the computational basis states. This section discusses in brief few of the most important algorithms in quantum computation. Discussion on mathematical derivations of the algorithms is out of the scope of this dissertation. All these algorithms form the basis of many complex quantum algorithms and are essential in understanding how quantum computers can be utilized to solve problems.
 
+\subsection{Quantum Superposition}
+\label{sec:qSupPos}
+Quantum Superposition is a quantum mechanical phenomena wherein a single qubit occupies multiple possible states at any given time. Although this state is not directly observable by any measurement apparatus, its applicability in quantum parallelism gives an edge to quantum computers over their classical counterparts to carry out multiple operations on the qubits at any single instance. If the computational states of measurement are \(\ket{0}\) and \(\ket{1}\), then an equal superposition of these two states can be obtained by applying the Hadamard transformation to the register of input qubits. Figure \ref{fig:qSupPos} shows the circuit to achieve the Hadamard transformation which achieves an equal superposition state of all possible states of individual qubits. If n is the number of input qubits and N=\(2^n\) are the computational basis states of the combination of the qubits, then the probability of measuring the qubits in any of the basis states is equal to \(\dfrac{1}{N}\). For the 3 qubit circuit, possible basis states are \(\ket{000}\), \(\ket{001}\), \(\ket{010}\), \(\ket{011}\), \(\ket{100}\), \(\ket{101}\), \(\ket{110}\) and \(\ket{111}\). After hadamard transform, the measurment probability of each of these states is \(\dfrac{1}{8}\). This forms the basis for the algorithm of random number generation in quantum computers.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Images/Quantum Superposition.png}
+    \caption{Circuit to create equal superposition of the states of 3 qubits}
+    \label{fig:qSupPos}
+\end{figure}
+
+\subsection{Quantum Teleportation}
+\label{sec:qTele}
+Quantum Teleportation makes use of quantum entanglement of qubits to communicate the information about an arbitrary state of a qubit between two parties. Consider a scenario where Alice has a qubit in the state \(\alpha\ket{0} + \beta\ket{1}\). As the knowledge about the parameters \(\alpha\) and \(\beta\) can not be obtained by classical measurement, Alice can not communicate this information directly to Bob using classical channels. However, Alice and Bob both possess a single qubit of the entangled pair \(\dfrac{\ket{00} + \ket{11}}{\sqrt{2}}\). This entangled pair can be used to send arbitrary state \(\ket{\psi}\) of a qubit from Alice to Bob.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Images/quantumTeleport.png}
+    \caption{Circuit for Quantum Teleportation}
+    \label{fig:qTelePort}
+\end{figure}
+\noindent In this algorithm, Alice has a qubit in arbitrary state \(\ket{\psi}=\alpha\ket{0} + \beta\ket{1}\) and one of the entangled pair of qubits, while the other qubit of the entangled pair is in the possession of Bob. Initial state of the 3 qubits together can be specified as \(\ket{\psi_0}=\dfrac{1}{\sqrt{2}}\left[\alpha\ket{0}\left(\ket{00}+\ket{11}\right)+\beta\ket{1}\left(\ket{00}+\ket{11}\right)\right]\). Alice applies a CNOT gate with the arbitrary qubit as a control qubit and entangled qubit as the target qubit. This changes the state to \(\ket{\psi_1}=\dfrac{1}{\sqrt{2}}\left[\alpha\ket{0}\left(\ket{00}+\ket{11}\right)+\beta\ket{1}\left(\ket{00}+\ket{01}\right)\right]\). The state \(\ket{\psi_2}\), after applying the Hadamard gate to the arbitrary qubit is given by equation \ref{eq:11}.
+\begin{equation}\label{eq:11}
+\ket{\psi_2}=\dfrac{1}{2}\left[\ket{00}\left(\alpha\ket{0}+\beta\ket{1}\right)+\ket{01}\left(\alpha\ket{1}+\beta\ket{0}\right)+\ket{10}\left(\alpha\ket{0}-\beta\ket{1}\right)+\ket{11}\left(\alpha\ket{1}-\beta\ket{0}\right)\right]
+\end{equation}
+
+\noindent Alice does the measurement of both the qubits and shares the classical measurement result with Bob. Depending on the result of Alice's measurements, Bob applies unitary transformations to his qubit to obtain the arbitrary state.
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Measurement Result} & \textbf{Bob's Qubit State} & \textbf{Transformation} \\
+\hline
+00 & \(\alpha\ket{0}+\beta\ket{1}\) & No Transformation Required\\
+\hline
+01 & \(\alpha\ket{1}+\beta\ket{0}\) & Apply Pauli-X gate \\
+\hline
+10 & \(\alpha\ket{0}-\beta\ket{1}\) & Apply Pauli-Z gate \\
+\hline
+11 & \(\alpha\ket{1}-\beta\ket{0}\) & Apply Pauli-X followed by Pauli-Z gate\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Transformation on Bob's qubit for Teleportation} 
+\label{tab:qTelePort}
+\end{table}
+
+\noindent This algorithm is in accordance with the no-cloning theorem and does not copy the state of Alice's qubit to Bob's qubit. The arbitrary state of Alice's qubit is destroyed due to the measurement before teleportation. This algorithm is the basis of quantum communication.
+
+\subsection{Grover's Search Algorithm}
+\label{sec:groverAlgo}
+Consider a database with N entries of bit strings without any well defined structure. This database contains a bit string \(x_1\) such that f(\(x_1\))=1. For all other bit strings in the database f(x)=0. In the worst case, best known classical algorithms require to scan all the entries in the database to find \(x_1\) resulting in the complexity of O(N). Grover's search algorithm solves this problem with a quadratic speedup over the classical algorithms.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Images/GroversCircuit.png}
+    \caption{Grovers Algorithm - Circuit Diagram}
+    \label{fig:groverCircuit}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{Images/GroversSteps.PNG}
+    \caption{Grovers Algorithm - Steps}
+    \label{fig:groverSteps}
+\end{figure}
+
+\noindent Grovers algorithm works by initializing state vector in equal superposition of n=\(log_2\)N qubits using the hadamard transformation. It then applies the Grover's iteration on the register of qubits which involves phase flip of the desired state followed by state inversion about the mean as shown in figure \ref{fig:groverSteps}. Grover's iteration is repeated \(\sqrt{N}\) times to achieve the desired measurement with high probability. The circuit diagram for Grover's algorithm is shown in figure \ref{fig:groverCircuit}.
+
+\subsection{Shor's Factoring Algorithm}
+\label{sec:shorAlgo}
+Shor's algorithm makes use of quantum fourier transform to find prime factors of a number within polynomial time as opposed to classical algorithms which take an exponential time. This algorithm can be understood by taking a simple example of finding the prime factors of number 15. The algorithm selects a random number less than 15 which is co-prime with 15. Using the randomly selected number Shor's period finding algorithm finds the period r such that \(a^r\) mod N = 1 and \(r \neq 0\). If r is even, then there is a high probability that the greatest common divisor of either \(\left(a^\frac{r}{2} + 1\right)\) and N or \(\left(a^\frac{r}{2} - 1\right)\) and N, is a prime factor of N. If r is odd, then the algorithm repeats the steps till it finds an even r. For our example, the period is 4 as shown in the table \ref{tab:shorPeriodFinding}. So, prime factors of 15 can be calculated by finding the GCD of \(7^2\) + 1 = 50 \& 15 = 5 and the GCD of \(7^2\) - 1 = 48 \& 15 = 3. The part of period finding in this algorithm makes use of quantum fourier transform which takes polynomial time.
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\(7^0\) mod 15 $\equiv$ 1 mod 15\\
+\hline
+\(7^1\) mod 15 $\equiv$ 7 mod 15\\
+\hline
+\(7^2\) mod 15 $\equiv$ 4 mod 15\\
+\hline
+\(7^3\) mod 15 $\equiv$ 13 mod 15\\
+\hline
+\(7^4\) mod 15 $\equiv$ 1 mod 15\\
+\hline
+:\\
+\hline
+:\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Period finding of Shor's algorithm} 
+\label{tab:shorPeriodFinding}
+\end{table}
 
 \section{Quantum Data Classification}
-\label{sec:qmlDataClass}
+\label{sec:qml}
+Classical machine learning technology has been developed over the last few decades and has provided ingenious solutions to various computational problems. Applications utilizing machine learning techniques span across fields like healthcare, industrial automation, image processing, automobiles etc. Recent progress in neural networks has improved the accuracy of these applications even further. However, efficiency and accuracy of most of the machine learning algorithms depends on big data analysis and this is a challenge for classical computers due to the huge growth of required data.
+
+\noindent Recent work in the field of Quantum Machine Learning claims to have achieved significant speed improvements over best available classical algorithms. Quantum ML algorithms can be broadly classified into 3 categories. The first category contains classical ML algorithms converted to be executed on quantum computers. Second category of QML algorithms are called quantum inspired ML algorithms and take inspiration from quantum principles to improve performance. Hybrid classical-quantum machine learning algorithms fall into third category and make use of classical computers along with quantum subroutines. Many of the Quantum ML techniques such as Quantum Support Vector Machines and Quantum Principle Component Analysis are based on the HHL quantum algorithm for solving linear equations. While, quantum K-Means clustering algorithm makes use of Grover's search algorithm along with Phase estimation and Swap-Test.
+
+\noindent Data Classification is one of the most basic machine learning application. Recently many supervised learning algorithms are implemented in quantum computers for classifying input data vectors. 
 
 %%%%%%%%
 \chapter{Work to date}
