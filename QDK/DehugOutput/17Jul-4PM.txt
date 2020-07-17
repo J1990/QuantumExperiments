@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+You may only use the Microsoft .NET Core Debugger (vsdbg) with
+Visual Studio Code, Visual Studio or Visual Studio for Mac software
+to help you develop and test your applications.
+-------------------------------------------------------------------
+Time: 17-07-2020 15:46:51
+Time: 15:46:51.5026292
+[00:00:00.3954141 +00:00:00.3954064] Ready to train.
+[00:00:20.6106417 +00:00:20.2152276] Ready to train.
+[00:00:20.6334069 +00:00:00.0227652]   Beginning training at start point #0...
+[00:00:51.3141994 +00:00:30.6807925]     Pre-encoding samples...
+[00:00:51.6965450 +00:00:00.3823456]     Beginning epoch 1.
+[00:01:22.5913200 +00:00:30.8947750]         Beginning minibatch 0 of 46.
+[00:01:22.6091341 +00:00:00.0178141]       Estimating gradient at sample 0...
+[00:01:29.3166647 +00:00:06.7075306] Unhandled exception. System.Runtime.InteropServices.SEHException: External component has thrown an exception.
+[00:01:29.3553565 +00:00:00.0386918]  ---> Microsoft.Quantum.Characterization.EstimateFrequencyA on D:\a\1\s\submodules\QuantumLibraries\Standard\src\Characterization\EstimateFrequency.qs:line 0
+[00:01:29.3556024 +00:00:00.0002459]    at Microsoft.Quantum.Characterization.EstimateRealOverlapBetweenStates on D:\a\1\s\submodules\QuantumLibraries\Standard\src\Characterization\Distinguishability.qs:line 0
+[00:01:29.3557688 +00:00:00.0001664]    at Microsoft.Quantum.MachineLearning._EstimateDerivativeWithParameterShift on D:\a\1\s\submodules\QuantumLibraries\MachineLearning\src\GradientEstimation.qs:line 0
+[00:01:29.3558724 +00:00:00.0001036]    at Microsoft.Quantum.MachineLearning.EstimateGradient on D:\a\1\s\submodules\QuantumLibraries\MachineLearning\src\GradientEstimation.qs:line 0
+[00:01:29.3559719 +00:00:00.0000995]    at Microsoft.Quantum.MachineLearning._RunSingleTrainingStep on D:\a\1\s\submodules\QuantumLibraries\MachineLearning\src\Training.qs:line 0
+[00:01:29.3560747 +00:00:00.0001028]    at Microsoft.Quantum.MachineLearning._RunSingleTrainingEpoch on D:\a\1\s\submodules\QuantumLibraries\MachineLearning\src\Training.qs:line 0
+[00:01:29.3561791 +00:00:00.0001044]    at Microsoft.Quantum.MachineLearning._TrainSequentialClassifierAtModel on D:\a\1\s\submodules\QuantumLibraries\MachineLearning\src\Training.qs:line 0
+[00:01:29.3562717 +00:00:00.0000926]    at Microsoft.Quantum.MachineLearning.TrainSequentialClassifierAtModel on D:\a\1\s\submodules\QuantumLibraries\MachineLearning\src\Training.qs:line 0
+[00:01:29.3564113 +00:00:00.0001396]    at Microsoft.Quantum.MachineLearning.TrainSequentialClassifier on D:\a\1\s\submodules\QuantumLibraries\MachineLearning\src\Training.qs:line 0
+[00:01:29.3566001 +00:00:00.0001888]    at TCD.MS.IS.Dissertation.TrainMnistModel on D:\GDrive\MSc\Dissertation\git\QuantumExperiments\QDK\QuantumTraining.qs:line 0
+[00:01:29.3566195 +00:00:00.0000194]
+Unhandled exception. System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
+   at Microsoft.Quantum.Simulation.Simulators.QuantumSimulator.QSimQubitManager.AllocateOne(UInt32 id, UInt32 qubit_id)
+   at Microsoft.Quantum.Simulation.Simulators.QuantumSimulator.QSimQubitManager.AllocateOneQubit(Boolean usedOnlyForBorrowing)
+   at Microsoft.Quantum.Simulation.Common.QubitManager.Allocate(Int64 numToAllocate)
+   at Microsoft.Quantum.Characterization.EstimateFrequencyA.Native.<get_Body>b__20_0(ValueTuple`4 _args)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Apply(I a)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Microsoft.Quantum.Simulation.Core.ICallable<I,O>.Apply(I args)
+   at Microsoft.Quantum.Characterization.EstimateRealOverlapBetweenStates.<get_Body>b__19_0(ValueTuple`5 __in__)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Apply(I a)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Microsoft.Quantum.Simulation.Core.ICallable<I,O>.Apply(I args)
+   at Microsoft.Quantum.MachineLearning._EstimateDerivativeWithParameterShift.<get_Body>b__27_0(ValueTuple`5 __in__)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Apply(I a)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Microsoft.Quantum.Simulation.Core.ICallable<I,O>.Apply(I args)
+   at Microsoft.Quantum.MachineLearning.EstimateGradient.<get_Body>b__35_0(ValueTuple`3 __in__)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Apply(I a)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Microsoft.Quantum.Simulation.Core.ICallable<I,O>.Apply(I args)
+   at Microsoft.Quantum.MachineLearning._RunSingleTrainingStep.<get_Body>b__44_0(ValueTuple`3 __in__)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Apply(I a)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Microsoft.Quantum.Simulation.Core.ICallable<I,O>.Apply(I args)
+   at Microsoft.Quantum.MachineLearning._RunSingleTrainingEpoch.<get_Body>b__68_0(ValueTuple`6 __in__)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Apply(I a)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Microsoft.Quantum.Simulation.Core.ICallable<I,O>.Apply(I args)
+   at Microsoft.Quantum.MachineLearning._TrainSequentialClassifierAtModel.<get_Body>b__87_0(ValueTuple`4 __in__)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Apply(I a)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Microsoft.Quantum.Simulation.Core.ICallable<I,O>.Apply(I args)
+   at Microsoft.Quantum.MachineLearning.TrainSequentialClassifierAtModel.<get_Body>b__48_0(ValueTuple`5 __in__)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Apply(I a)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Microsoft.Quantum.Simulation.Core.ICallable<I,O>.Apply(I args)
+   at Microsoft.Quantum.MachineLearning.TrainSequentialClassifier.<get_Body>b__40_0(ValueTuple`5 __in__)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Apply(I a)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Microsoft.Quantum.Simulation.Core.ICallable<I,O>.Apply(I args)
+   at TCD.MS.IS.Dissertation.TrainMnistModel.<get_Body>b__52_0(ValueTuple`2 __in__) in D:\GDrive\MSc\Dissertation\git\QuantumExperiments\QDK\QuantumTraining.qs:line 65
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Apply(I a)
+   at Microsoft.Quantum.Simulation.Core.Operation`2.Apply[GenO](Object args)
+   at Microsoft.Quantum.Simulation.Common.SimulatorBase.Execute[T,I,O](I args)
+   at Microsoft.Quantum.Simulation.Common.SimulatorBase.<>c__DisplayClass43_0`3.<Run>b__0()
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at TCD.MS.IS.Dissertation.ClassicalHost.Main(String[] args) in D:\GDrive\MSc\Dissertation\git\QuantumExperiments\QDK\ClassicalHost.cs:line 36
+   at TCD.MS.IS.Dissertation.ClassicalHost.<Main>(String[] args)
