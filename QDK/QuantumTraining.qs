@@ -29,12 +29,7 @@ namespace TCD.MS.IS.Dissertation {
 
     function ClassifierStructure() : ControlledRotation[] {
         return CombinedStructure([
-            LocalRotationsLayer(10, PauliZ),
-            LocalRotationsLayer(10, PauliX),
-            CyclicEntanglingLayer(10, PauliX, 1),
-            PartialRotationsLayer([3], PauliX),
-            PartialRotationsLayer([6], PauliX),
-            PartialRotationsLayer([9], PauliX)
+            LocalRotationsLayer(10, PauliZ)
         ]);
     }
 
