@@ -19,7 +19,7 @@ namespace TCD.MS.IS.Dissertation {
             Zip(Preprocessed(validationVectors), validationLabels)
         );
         let tolerance = 0.005;
-        let nMeasurements = 5000;
+        let nMeasurements = 10000;
         let results = ValidateSequentialClassifier(
             SequentialModel(ClassifierStructure(), parameters, bias),
             samples,

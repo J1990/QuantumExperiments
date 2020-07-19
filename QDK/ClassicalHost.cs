@@ -25,7 +25,7 @@ namespace TCD.MS.IS.Dissertation
 
                 // We start by loading the training and validation data from our JSON
                 // data file.
-                var data = await LoadData("Data\\MNIST\\mnist.json");
+                var data = await LoadData("Data\\MNIST\\mnist_pca.json");
 
                 // Next, we initialize a full state-vector simulator as our target machine.
                 using var targetMachine = new QuantumSimulator().WithTimestamps();

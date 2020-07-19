@@ -8,6 +8,7 @@ import cv2
 import math
 import codecs
 import json
+from sklearn.decomposition import PCA
 
 def extract_features_labels(imageDirectories):
     label = 0
@@ -33,20 +34,24 @@ def extract_features_labels(imageDirectories):
         imageFiles = numpy.array([numpy.array(Image.open(im)).flatten()
                                 for im in imageFilePaths], 'f')
 
+        pca10Components = PCA(n_components=10)
+        projected10 = pca10Components.fit_transform(imageFiles)
+        prinicipleComponents = pca10Components.components_
+
         # Round values in array and cast as 8-bit integer
         arr = numpy.array(numpy.round(arr), dtype=numpy.uint8)
 
-        imageVectors = imageFiles.reshape(numberOfImages, width*height)
+        imageVectors = projected10.reshape(numberOfImages, 10)/200
         features = features + imageVectors.tolist()
 
         labels = labels + [label]*numberOfImages
         label = label + 1
 
-    return features, labels;
+    return numpy.round(features, 2).tolist(), labels;
 
 trainImagesDirectories = ["Data\\MNIST\\Train\\3", "Data\\MNIST\\Train\\6"]
 testImagesDirectories = ["Data\\MNIST\\Test\\3", "Data\\MNIST\\Test\\6"]
-json_data_file_path = "D:\\GDrive\\MSc\\Dissertation\\git\\QuantumExperiments\\QDK\\Data\\MNIST\\mnist.json"
+json_data_file_path = "D:\\GDrive\\MSc\\Dissertation\\git\\QuantumExperiments\\QDK\\Data\\MNIST\\mnist_pca.json"
 
 trainingFeatures, trainingLabels = extract_features_labels(trainImagesDirectories)
 validationFeatures, validationLabels = extract_features_labels(testImagesDirectories)  
