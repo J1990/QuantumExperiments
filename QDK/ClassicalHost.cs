@@ -16,6 +16,8 @@ namespace TCD.MS.IS.Dissertation
         {
             try
             {
+                string json_data_path = "Data\\MNIST\\mnist_pca_30Components_3_6.json";
+
                 Stopwatch stopwatch = new Stopwatch();
 
                 stopwatch.Start();
@@ -25,7 +27,7 @@ namespace TCD.MS.IS.Dissertation
 
                 // We start by loading the training and validation data from our JSON
                 // data file.
-                var data = await LoadData("Data\\MNIST\\mnist_pca.json");
+                var data = await LoadData(json_data_path);
 
                 // Next, we initialize a full state-vector simulator as our target machine.
                 using var targetMachine = new QuantumSimulator().WithTimestamps();

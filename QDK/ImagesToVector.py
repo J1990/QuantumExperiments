@@ -7,65 +7,79 @@ import matplotlib.pyplot as plt
 import cv2
 import math
 import codecs
-import json
 from sklearn.decomposition import PCA
+import JsonEncoder as json
 
-def extract_features_labels(imageDirectories):
-    label = 0
-    features = []
-    labels = []
+countOfTestImages = 100
+countOfTrainImages = 2000
+numOfPrincipalComponents = 30
 
-    for imagesDirectory in imageDirectories:
-        imageFilePaths = [f for f in glob.glob(imagesDirectory + "**/*.jpg")]
+firstSetTrainImagesDirectories = ["Data\\MNIST\\Train\\3", "Data\\MNIST\\Train\\6"]
+firstSetTestImagesDirectories = ["Data\\MNIST\\Test\\3", "Data\\MNIST\\Test\\6"]
+first_set_json_data_file_path = "Data\\MNIST\\mnist_pca_" + str(numOfPrincipalComponents) +"Components_3_6.json"
+
+secondSetTrainImagesDirectories = ["Data\\MNIST\\Train\\1", "Data\\MNIST\\Train\\7"]
+secondSetTestImagesDirectories = ["Data\\MNIST\\Test\\1", "Data\\MNIST\\Test\\7"]
+second_set_json_data_file_path = "Data\\MNIST\\mnist_pca_" + str(numOfPrincipalComponents) +"Components_1_7.json"
+
+def apply_pca(imageFiles, numImages):
+
+    normalizationFactor = 250
+
+    pcaComponents = PCA(n_components=numOfPrincipalComponents)
+    projected = pcaComponents.fit_transform(imageFiles)
+    #prinicipleComponents = pcaComponents.components_
+
+    imageVectors = projected.reshape(numImages, numOfPrincipalComponents)/normalizationFactor
+
+    return imageVectors
+
+def extract_features_labels(trainImageDirectories, testImageDirectories):
+    train_features = []
+    train_labels = []
+    test_features = []
+    test_labels = []
+
+    for label in [0, 1]:
+
+        #Combine train and test data for single class of images
+        imageFilePaths = [f for f in glob.glob(trainImageDirectories[label] + "**/*.jpg")]
+        imageFilePaths = imageFilePaths + [f for f in glob.glob(testImageDirectories[label] + "**/*.jpg")]
 
         # Assuming all images are the same size, get dimensions of first image
         width, height = Image.open(imageFilePaths[0]).size
-        numberOfImages = len(imageFilePaths)
+        numberOfImages = len(imageFilePaths)        
 
-        # Create a numpy array of floats to store the average
-        arr = numpy.zeros((height, width), numpy.float)
-
-        # Build up average pixel intensities, casting each image as an array of floats
-        for im in imageFilePaths:
-            imgFile = Image.open(im)
-            imageMat = numpy.array(imgFile, dtype=numpy.float)
-            arr = arr+imageMat/numberOfImages
-
+        #Read all images into flat arrays of features
         imageFiles = numpy.array([numpy.array(Image.open(im)).flatten()
                                 for im in imageFilePaths], 'f')
+        
+        #Reduce number of features by applying PCA
+        imageVectors = apply_pca(imageFiles, numberOfImages);
 
-        pca10Components = PCA(n_components=10)
-        projected10 = pca10Components.fit_transform(imageFiles)
-        prinicipleComponents = pca10Components.components_
+        train_labels = train_labels + [label]*countOfTrainImages
+        test_labels = test_labels + [label]*countOfTestImages
+        
+        train_features.extend(imageVectors[0:countOfTrainImages])
+        test_features.extend(imageVectors[countOfTrainImages:])
 
-        # Round values in array and cast as 8-bit integer
-        arr = numpy.array(numpy.round(arr), dtype=numpy.uint8)
+    return train_features, test_features, train_labels, test_labels;
 
-        imageVectors = projected10.reshape(numberOfImages, 10)/200
-        features = features + imageVectors.tolist()
-
-        labels = labels + [label]*numberOfImages
-        label = label + 1
-
-    return numpy.round(features, 2).tolist(), labels;
-
-trainImagesDirectories = ["Data\\MNIST\\Train\\3", "Data\\MNIST\\Train\\6"]
-testImagesDirectories = ["Data\\MNIST\\Test\\3", "Data\\MNIST\\Test\\6"]
-json_data_file_path = "D:\\GDrive\\MSc\\Dissertation\\git\\QuantumExperiments\\QDK\\Data\\MNIST\\mnist_pca.json"
-
-trainingFeatures, trainingLabels = extract_features_labels(trainImagesDirectories)
-validationFeatures, validationLabels = extract_features_labels(testImagesDirectories)  
-
-x = {
-    "TrainingData": {
-        "Features": trainingFeatures,
-        "Labels": trainingLabels
-    },
-    "ValidationData":{
-        "Features": validationFeatures,
-        "Labels": validationLabels
+def dump_to_json(trainingFeatures, trainingLabels, validationFeatures, validationLabels, json_path):
+    feature_label_data = {
+        "TrainingData": {
+            "Features": numpy.array(trainingFeatures).tolist(),
+            "Labels": trainingLabels
+        },
+        "ValidationData":{
+            "Features": numpy.array(validationFeatures).tolist(),
+            "Labels": validationLabels
+        }
     }
-}
 
-json.dump(x, codecs.open(json_data_file_path, 'w', encoding='utf-8'),
-          separators=(',', ':'), sort_keys=True, indent=4)
+    json.dump(feature_label_data, json_path, 4)
+
+
+trainFeat, testFeat, trainLab, testLab = extract_features_labels(firstSetTrainImagesDirectories, firstSetTestImagesDirectories)
+
+dump_to_json(trainFeat, trainLab, testFeat, testLab, first_set_json_data_file_path)
