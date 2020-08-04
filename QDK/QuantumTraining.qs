@@ -58,8 +58,7 @@ namespace TCD.MS.IS.Dissertation {
         let structure = ClassifierStructure();
         // Sample a random set of parameters.
         let initialParameters = SampleInitialParameters(30, structure);
-
-        Message("Ready to train.");
+        
         let (optimizedModel, nMisses) = TrainSequentialClassifier(
             Mapped(
                 SequentialModel(structure, _, 0.0),
@@ -68,10 +67,10 @@ namespace TCD.MS.IS.Dissertation {
             samples,
             DefaultTrainingOptions()
                 w/ LearningRate <- 0.4
-                w/ MinibatchSize <- 100
+                w/ MinibatchSize <- 50
                 w/ Tolerance <- 0.01
                 w/ NMeasurements <- 10000
-                w/ MaxEpochs <- 10
+                w/ MaxEpochs <- 4
                 w/ VerboseMessage <- Message,
             DefaultSchedule(samples),
             DefaultSchedule(samples)
