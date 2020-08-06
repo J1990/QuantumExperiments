@@ -30,6 +30,7 @@ namespace TCD.MS.IS.Dissertation {
     function ClassifierStructure() : ControlledRotation[] {
         return CombinedStructure([
             LocalRotationsLayer(5, PauliZ),
+            LocalRotationsLayer(5, PauliX),
             PartialRotationsLayer([3], PauliX)
         ]);
     }
@@ -67,10 +68,10 @@ namespace TCD.MS.IS.Dissertation {
             samples,
             DefaultTrainingOptions()
                 w/ LearningRate <- 0.4
-                w/ MinibatchSize <- 50
+                w/ MinibatchSize <- 100
                 w/ Tolerance <- 0.01
                 w/ NMeasurements <- 10000
-                w/ MaxEpochs <- 1
+                w/ MaxEpochs <- 2
                 w/ VerboseMessage <- Message,
             DefaultSchedule(samples),
             DefaultSchedule(samples)
