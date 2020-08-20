@@ -31,7 +31,7 @@ namespace TCD.MS.IS.Dissertation {
         return CombinedStructure([
             LocalRotationsLayer(5, PauliZ),
             LocalRotationsLayer(5, PauliX),
-            PartialRotationsLayer([3], PauliX)
+            CyclicEntanglingLayer(5, PauliZ, 2)
         ]);
     }
 
@@ -76,7 +76,7 @@ namespace TCD.MS.IS.Dissertation {
             DefaultSchedule(samples),
             DefaultSchedule(samples)
         );
-        Message($"Training complete, found optimal parameters: {optimizedModel::Parameters}");
+        Message($"Training complete, found optimal parameters: {optimizedModel::Parameters}, Bias: {optimizedModel::Bias}");
         return (optimizedModel::Parameters, optimizedModel::Bias);
     }
 

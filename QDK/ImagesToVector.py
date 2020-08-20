@@ -18,9 +18,9 @@ firstSetTrainImagesDirectories = ["Data\\MNIST\\Train\\3", "Data\\MNIST\\Train\\
 firstSetTestImagesDirectories = ["Data\\MNIST\\Test\\3", "Data\\MNIST\\Test\\6"]
 first_set_json_data_file_path = "Data\\MNIST\\mnist_pca_" + str(numOfPrincipalComponents) +"Components_3_6.json"
 
-secondSetTrainImagesDirectories = ["Data\\MNIST\\Train\\1", "Data\\MNIST\\Train\\7"]
-secondSetTestImagesDirectories = ["Data\\MNIST\\Test\\1", "Data\\MNIST\\Test\\7"]
-second_set_json_data_file_path = "Data\\MNIST\\mnist_pca_" + str(numOfPrincipalComponents) +"Components_1_7.json"
+secondSetTrainImagesDirectories = ["Data\\MNIST\\Train\\1", "Data\\MNIST\\Train\\6"]
+secondSetTestImagesDirectories = ["Data\\MNIST\\Test\\1", "Data\\MNIST\\Test\\6"]
+second_set_json_data_file_path = "Data\\MNIST\\mnist_pca_" + str(numOfPrincipalComponents) +"Components_1_6.json"
 
 def apply_pca(imageFiles, numImages):
 
@@ -80,6 +80,6 @@ def dump_to_json(trainingFeatures, trainingLabels, validationFeatures, validatio
     json.dump(feature_label_data, json_path, 4)
 
 
-trainFeat, testFeat, trainLab, testLab = extract_features_labels(firstSetTrainImagesDirectories, firstSetTestImagesDirectories)
+trainFeat, testFeat, trainLab, testLab = extract_features_labels(secondSetTrainImagesDirectories, secondSetTestImagesDirectories)
 
-dump_to_json(trainFeat, trainLab, testFeat, testLab, first_set_json_data_file_path)
+dump_to_json(trainFeat, trainLab, testFeat, testLab, second_set_json_data_file_path)
