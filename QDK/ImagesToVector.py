@@ -12,7 +12,7 @@ import JsonEncoder as json
 
 countOfTestImages = 100
 countOfTrainImages = 2000
-numOfPrincipalComponents = 30
+numOfPrincipalComponents = 10
 
 firstSetTrainImagesDirectories = ["Data\\MNIST\\Train\\3", "Data\\MNIST\\Train\\6"]
 firstSetTestImagesDirectories = ["Data\\MNIST\\Test\\3", "Data\\MNIST\\Test\\6"]
@@ -80,6 +80,6 @@ def dump_to_json(trainingFeatures, trainingLabels, validationFeatures, validatio
     json.dump(feature_label_data, json_path, 4)
 
 
-trainFeat, testFeat, trainLab, testLab = extract_features_labels(secondSetTrainImagesDirectories, secondSetTestImagesDirectories)
+trainFeat, testFeat, trainLab, testLab = extract_features_labels(firstSetTrainImagesDirectories, firstSetTestImagesDirectories)
 
-dump_to_json(trainFeat, trainLab, testFeat, testLab, second_set_json_data_file_path)
+dump_to_json(trainFeat, trainLab, testFeat, testLab, first_set_json_data_file_path)

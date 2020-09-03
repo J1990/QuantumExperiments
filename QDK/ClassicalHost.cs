@@ -17,7 +17,7 @@ namespace TCD.MS.IS.Dissertation
         {
             try
             {
-                string json_data_path = "Data\\MNIST\\mnist_pca_30Components_3_6.json";
+                string json_data_path = "Data\\MNIST\\mnist_pca_10Components_3_6.json";
 
                 Stopwatch stopwatch = new Stopwatch();
 

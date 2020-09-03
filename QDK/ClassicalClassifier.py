@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score
 
 h = .02  # step size in the mesh
 
-with open('Data/MNIST/mnist_pca_30Components_3_6.json') as f:
+with open('Data/MNIST/mnist_pca_10Components_3_6.json') as f:
   data = json.load(f)
 
 trainingData = data["TrainingData"]

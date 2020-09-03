@@ -29,14 +29,14 @@ namespace TCD.MS.IS.Dissertation {
 
     function ClassifierStructure() : ControlledRotation[] {
         return CombinedStructure([
-            LocalRotationsLayer(5, PauliZ),
-            LocalRotationsLayer(5, PauliX),
-            CyclicEntanglingLayer(5, PauliZ, 2)
+            LocalRotationsLayer(4, PauliZ),
+            CyclicEntanglingLayer(4, PauliX, 1),
+            CyclicEntanglingLayer(4, PauliZ, 2)
         ]);
     }
 
     operation SampleSingleParameter() : Double {
-        return PI() * (RandomReal(30) - 1.0);
+        return PI() * (RandomReal(10) - 1.0);
     }
 
     operation SampleParametersForSequence(structure : ControlledRotation[]) : Double[] {
@@ -56,7 +56,9 @@ namespace TCD.MS.IS.Dissertation {
         Message("Ready to train.");
         let structure = ClassifierStructure();
         // Sample a random set of parameters.
-        let initialParameters = SampleInitialParameters(30, structure);
+        let initialParameters = SampleInitialParameters(10, structure);
+
+        
 
         let mappedModels = Mapped(
                 SequentialModel(structure, _, 0.0),
@@ -68,7 +70,7 @@ namespace TCD.MS.IS.Dissertation {
             samples,
             DefaultTrainingOptions()
                 w/ LearningRate <- 0.4
-                w/ MinibatchSize <- 100
+                w/ MinibatchSize <- 200
                 w/ Tolerance <- 0.01
                 w/ NMeasurements <- 10000
                 w/ MaxEpochs <- 2
