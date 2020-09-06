@@ -54,11 +54,12 @@ namespace TCD.MS.IS.Dissertation {
             Zip(Preprocessed(trainingVectors), trainingLabels)
         );
         Message("Ready to train.");
-        let structure = ClassifierStructure();
-        // Sample a random set of parameters.
-        let initialParameters = SampleInitialParameters(10, structure);
 
-        
+        //Build Classifier Architecture
+        let structure = ClassifierStructure();
+
+        //Random set of initial parameters for training
+        let initialParameters = SampleInitialParameters(10, structure);
 
         let mappedModels = Mapped(
                 SequentialModel(structure, _, 0.0),
