@@ -38,6 +38,7 @@
 \usepackage{fancyhdr}
 \usepackage{subcaption}
 \usepackage{shadethm}
+\usepackage{gensymb}
 \usepackage{ifpdf}
 \usepackage{amsthm}
 \usepackage{lastpage}
@@ -96,7 +97,7 @@
 \usepackage[T1]{fontenc}
 %preamble
 \usepackage[nottoc]{tocbibind}
-\usepackage[pdftex]{hyperref}                  
+\usepackage{hyperref}                  
 \hypersetup{backref,bookmarks=true,pdfpagemode=Fullscreen,linkcolor=black,colorlinks=true,urlcolor=black,citecolor=blue}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -300,7 +301,7 @@ In the equation \ref{eq:1}, \(\alpha\) and \(\beta\) are complex numbers and \(|
 1
 \end{bmatrix}
 \end{equation}
-The pure state of a qubit can also be thought as a point residing on the surface of the Bloch Sphere. Figure \ref{fig:bloch1} shows the Bloch sphere representation of the qubit state vector. The $\theta$ , $\phi$ are
+The pure state of a qubit can also be thought as a point residing on the surface of the Bloch Sphere. Figure \ref{fig:bloch1} shows the Bloch sphere representation of the qubit state vector.
 
 \begin{figure}[H]
 \centering
@@ -333,7 +334,7 @@ The pure state of a qubit can also be thought as a point residing on the surface
 North and south poles of the sphere represent $\ket{0}$, $\ket{1}$ states respectively. As shown in equation \ref{eq:3} \cite{nielsen_2019_quantum}, by ignoring the global phase, angles \(\theta\) and \(\varphi\) can be used to define any arbitrary state of a qubit. 
 
 \begin{equation}\label{eq:3}
-    \ket{\psi} = cos\hspace{2}\dfrac{\theta}{2}\hspace{2}\ket{0} + e^i^\varphi \hspace{2}sin\hspace{2}\dfrac{\theta}{2}\hspace{2}\ket{1}
+    \ket{\psi} = cos\hspace{2pt}\dfrac{\theta}{2}\hspace{2pt}\ket{0} + e^{i\varphi} \hspace{2pt}sin\hspace{2pt}\dfrac{\theta}{2}\hspace{2pt}\ket{1}
 \end{equation}
 
 Real quantum computers make use of atoms, trapped ions, electrons, photons to realize quantum bits \cite{ladd_2010_quantum}. Physically $\ket{0}$ and $\ket{1}$ states may correspond to polarization of a photon or the alignment of nuclear spins.
@@ -345,7 +346,7 @@ A single qubit alone is not sufficient to perform quantum computation. The power
 A multiple qubit system with n qubits has \(2^n\) computational basis states. These basis states of a multi-qubit system can be obtained by using tensor product of the basis states of individual qubits (For eg. \(\ket{00} = \ket{0}\otimes\ket{0}\)). Equation \ref{eq:4} represents an arbitrary state $\ket{\psi}$ in 2-qubit system. 
 
 \begin{equation}\label{eq:4}
-    \ket{\psi} = \alpha\ket{00} + \beta\ket{01} + \gamma\ket{10} + \delta\ket{11} \hspace{15} where \hspace{10} |\alpha|^2 + |\beta|^2 + |\gamma|^2 + |\delta|^2 = 1
+    \ket{\psi} = \alpha\ket{00} + \beta\ket{01} + \gamma\ket{10} + \delta\ket{11} \hspace{15pt} where \hspace{10pt} |\alpha|^2 + |\beta|^2 + |\gamma|^2 + |\delta|^2 = 1
 \end{equation}
 
 An important feature of multi-qubit quantum system is the ability to prepare entangled states of two or more qubits. The states of 2 entangled qubits affect each other even if the qubits are separated by a long distance. The entangled state \(\dfrac{\ket{00} + \ket{11}}{\sqrt{2}}\) is called the Bell state or EPR pair and is the basic ingredient of multiple quantum algorithms. The terminology entanglement of two qubits specifies that the measurement of the state of only a single qubit among the EPR pair is sufficient to predict the outcome of measurement of the second qubit with absolute certainty.
@@ -354,7 +355,7 @@ An important feature of multi-qubit quantum system is the ability to prepare ent
 \label{sec:qGates}
 For any meaningful computation, the ability to manipulate states of the qubits is essential. Various quantum gates are the means to linearly transform the state vector of a single qubit or register of multiple qubits. Quantum computers make use of lasers, magnetic fields or other technologies to physically alter the qubit state.
 
-Similar to classical logic gates namely AND, OR, XOR etc., quantum computers make use of quantum gates which linearly change the qubit state vector. The Pauli-X gate is similar to classical NOT gate and acts on a single qubit to change the state from \(\ket{0}\) to \(\ket{1}\) and vice versa \cite{matuschak_2019_quantum}. The Pauli-X gate is represented in matrix format as shown in equation \ref{eq:5}.
+Similar to classical logic gates namely AND, OR, XOR etc., quantum computers make use of quantum gates which linearly change the qubit state vector. The Pauli-X gate can be thought of as equivalent to classical NOT gate and acts on a single qubit to change the state from \(\ket{0}\) to \(\ket{1}\) and vice versa \cite{matuschak_2019_quantum}. The Pauli-X gate is represented in matrix format as shown in equation \ref{eq:5}.
 \begin{equation}\label{eq:5}
 X = 
 \begin{bmatrix}
@@ -397,7 +398,7 @@ X\ket{\psi} = \alpha X \ket{0} + \beta X \ket{1} =
 \alpha\ket{1} + \beta\ket{0}
 \end{equation}
 
-The Pauli-Y and Pauli-Z gates are other two gates in the Pauli set and both of these act on a single qubit. Another important single qubit gate is the Hadamard gate. The Hadamard gate creates an equal superposition of both the computational basis states. Matrix representation of Pauli-Y, Pauli-Z and Hadamard gates is given by equation \ref{eq:7}. 
+The Pauli-Y and Pauli-Z gates are other two gates in the Pauli set and both of these act on a single qubit. Another important single qubit gate is the Hadamard gate. The Hadamard gate rotates the state vector of a qubit first by 90\degree around y-axis and then by 180\degree around x-axis. This results in qubit being in superposition of the basis states. Matrix representation of Pauli-Y, Pauli-Z and Hadamard gates is given by equation \ref{eq:7}. 
 
 \begin{equation}\label{eq:7}
 Y = 
@@ -419,7 +420,7 @@ H = \dfrac{1}{\sqrt{2}}
 \end{bmatrix}
 \end{equation}
 
-Quantum computation also makes use of gates acting on states of multiple qubits. A 4x4 CNOT gate acts on a register of 2 qubits. One of the qubits acts as the control qubit whereas another qubit in the set is called the target qubit. Based on the state of control qubit, the CNOT gate acts on the target qubit to flip its state. If the control qubit is in the state \(\ket{0}\) then the CNOT gate does nothing to the target qubit and its state remains unchanged, whereas if the control qubit is in the state \(\ket{1}\), the CNOT gate acts as a X gate on the target qubit. The dimensions of the matrix of a multi-qubit gate acting on n qubits is \(2^n\)x\(2^n\).
+Quantum computation also makes use of gates acting on states of multiple qubits. A 4x4 CNOT gate acts on a string of 2 qubits. One of the qubits acts as the control qubit whereas another qubit in the set is called the target qubit. Based on the state of control qubit, the CNOT gate acts on the target qubit to flip its state. If the control qubit is in the state \(\ket{0}\) then the CNOT gate works as identity and does nothing to the target qubit and its state remains unchanged, whereas if the control qubit is in the state \(\ket{1}\), the CNOT gate acts as a X gate on the target qubit. The dimensions of the matrix of a multi-qubit gate acting on n qubits is \(2^n\)x\(2^n\).
 
 \begin{equation}\label{eq:8}
 U_{CNOT} = 
@@ -431,10 +432,10 @@ U_{CNOT} =
 \end{bmatrix}
 \end{equation}
 
-All quantum gates are unitary matrices i.e. the hermitian conjugate or adjoint of the gate matrix is also the inverse of the matrix. A hermitian conjugate is obtained by flipping the given matrix over its diagonal and changing the sign of the imaginary parts of the complex numbers. This constraint on the quantum gates makes them reversible. Hence, information about the input to the quantum gate never gets lost unlike the classical logic gates. Equation \ref{eq:9} is true for every quantum gate U and depicts that applying any gate twice on input qubit states restores the original quantum state. Also, unitary matrices maintain the normalization condition of the qubit state given by \(|\alpha|^2\) + \(|\beta|^2\) = 1.
+All quantum gates are unitary matrices i.e. the hermitian conjugate or adjoint of the gate matrix is also the inverse of the matrix. A hermitian conjugate is obtained by flipping the given matrix over its diagonal and changing the sign of the imaginary parts of the complex numbers. The operation of quantum gates is reversible since for any unitary gate U, there exists a gate \(U^{\dagger}\) such that \(U^{\dagger} U = I\). Hence, information about the input to the quantum gate never gets lost unlike the classical logic gates. Equation \ref{eq:9} is true for every quantum gate U and depicts that applying any gate twice on input qubit states restores the original quantum state. Also, unitary matrices maintain the normalization condition of the qubit state given by \(|\alpha|^2\) + \(|\beta|^2\) = 1.
 
 \begin{equation}\label{eq:9}
-UU^\dagger = I \hspace{25} where \hspace{5}U^\dagger = Adjoint(U)
+UU^\dagger = I \hspace{25pt} where \hspace{5pt}U^\dagger = Adjoint(U)
 \end{equation}
 
 As shown in equations \ref{eq:10} and \ref{eq:11}, the reversibility of quantum gates can be verified for any of the gates discussed so far. 
@@ -445,7 +446,7 @@ HH =
 1 & 1\\
 1 & -1
 \end{bmatrix}
-\hspace{10}
+\hspace{10pt}
 \dfrac{1}{\sqrt{2}}
 \begin{bmatrix}
 1 & 1\\
@@ -466,7 +467,7 @@ Effect of any arbitrary quantum gate on the state of a qubit can be thought of a
 
 \section{Quantum Circuits}
 \label{sec:qCirc}
-Quantum algorithms are depicted using the circuit model of computation. A quantum circuit comprises of register of qubits, quantum gates and measurements in classical bits. Logically, the simplest possible quantum circuit is a quantum wire which retains the state of a qubit over a period of time or a communication channel. However, this is the most difficult quantum circuit to implement physically, as the state of a qubit gets easily affected by its environment, corrupting the quantum information. 
+Quantum algorithms are depicted using the circuit model of computation. A quantum circuit consists of register of qubits, quantum gates and measurements in classical bits. Logically, the simplest possible quantum circuit is a quantum wire which retains the state of a qubit over a period of time or a communication channel. However, this is the most difficult quantum circuit to implement physically, as the state of a qubit gets easily affected by its environment, corrupting the quantum information. 
 
 \begin{figure}[H]
     \centering
@@ -479,8 +480,8 @@ Figure \ref{fig:qCircEx} shows the composition of a quantum circuit. Two qubits 
 
 \section{Quantum Computing - Hype and Promises}
 \label{sec:qHype}
-The Deutsch-Jozsa algorithm \cite{aradyamath_2019_quantum} was one of the first algorithms which showed that the quantum computers can be used to achieve exponential speedups using quantum parallelism over the best known classical algorithms. Shor's prime factoring algorithm \cite{shor_2019_algorithms} was a catalyst for the growing interest in quantum computing and quantum cryptography. It makes use of the efficiency of quantum fourier transform to find prime factors of given number N in polynomial time. No known classical algorithm exists that can acheive the same task polynomially even on best super computers. Grover's search algorithm \cite{grover_1996_a} provides quadratic speed improvement for searching a database with unsorted entries.
-Currently available quantum computers are still in early stages of development and thus restrict the practical verification of many theoretical algorithms which claim quantum supremacy. Furthermore, these machines are prone to errors due to environmental interference and decoherence \cite{schuld_2020_circuitcentric}, which is an active area of research in the field of quantum computation. However, steady growth of number of qubits and power of quantum computers, cloud access to physical systems and arrival of various software development kits for programmers all around the world to develop and test new algorithms, are some of the encouraging factors for research in this area.
+The Deutsch-Jozsa algorithm \cite{aradyamath_2019_quantum} was one of the first algorithms which showed that the quantum computers can be used to achieve exponential speedups using quantum parallelism over the best known classical algorithms. Shor's prime factoring algorithm \cite{shor_2019_algorithms} was a catalyst for the growing interest in quantum computing and quantum cryptography. It makes use of the efficiency of quantum fourier transform to find prime factors of given number N in polynomial time. Ther is no known algorithm in classical domain that can acheive the same task in polynomial time even on best super computers. Grover's search algorithm \cite{grover_1996_a} provides quadratic speed improvement for searching a database with unsorted entries.
+Currently available quantum computers are still in early stages of development and thus restrict the practical verification of many theoretical algorithms which claim quantum supremacy. Furthermore, these machines are prone to errors due to environmental interference and decoherence \cite{schuld_2020_circuitcentric}. This remains an important area of research in the field of quantum computation. However, steady growth of number of qubits and power of quantum computers, cloud access to physical systems and arrival of various software development kits for programmers all around the world to develop and test new algorithms, are some of the encouraging factors for research in this area.
 The no-cloning theorem \cite{wootters_1982_a} of quantum bits states that quantum information stored in one qubit can not be copied to another qubit without altering the state of the original qubit. This phenomenon has implications in the field of quantum cryptography and future of data security. Quantum chemistry is a major field of research as quantum computers can simulate quantum systems efficiently. Classical computers require exponentially increasing resources for simulation of such quantum information. Multiple companies have recognized the vast potential of quantum computers and are investing heavily in the field. Quantum machine learning, image processing, data analysis are few more fields that are gaining interest from scholars all around the globe.
 
 \section{Introduction to Quantum Algorithms}
@@ -507,7 +508,7 @@ Quantum Teleportation makes use of quantum entanglement of qubits to communicate
     \caption{Circuit for Quantum Teleportation \cite{nielsen_2019_quantum}}
     \label{fig:qTelePort}
 \end{figure}
-\noindent In this algorithm, Alice has a qubit in arbitrary state \(\ket{\psi}=\alpha\ket{0} + \beta\ket{1}\) and one of the entangled pair of qubits, while the other qubit of the entangled pair is in the possession of Bob. Initial state of the 3 qubits together can be specified as \(\ket{\psi_0}=\dfrac{1}{\sqrt{2}}\left[\alpha\ket{0}\left(\ket{00}+\ket{11}\right)+\beta\ket{1}\left(\ket{00}+\ket{11}\right)\right]\). Alice applies a CNOT gate with the arbitrary qubit as a control qubit and entangled qubit as the target qubit. This changes the state to \(\ket{\psi_1}=\dfrac{1}{\sqrt{2}}\left[\alpha\ket{0}\left(\ket{00}+\ket{11}\right)+\beta\ket{1}\left(\ket{00}+\ket{01}\right)\right]\). The state \(\ket{\psi_2}\), after applying the Hadamard gate to the arbitrary qubit is given by equation \ref{eq:11}.
+\noindent In this algorithm, Alice possesses a qubit in arbitrary state \(\ket{\psi}=\alpha\ket{0} + \beta\ket{1}\). She also has one of the entangled pair of qubits, while the other qubit of the entangled pair is in the possession of Bob. Initial state of the 3 qubits together can be specified as \(\ket{\psi_0}=\dfrac{1}{\sqrt{2}}\left[\alpha\ket{0}\left(\ket{00}+\ket{11}\right)+\beta\ket{1}\left(\ket{00}+\ket{11}\right)\right]\). Keeping the arbitrary qubit as a control qubit, Alice applies a CNOT gate on the entangled qubit as the target qubit. This changes the state to \(\ket{\psi_1}=\dfrac{1}{\sqrt{2}}\left[\alpha\ket{0}\left(\ket{00}+\ket{11}\right)+\beta\ket{1}\left(\ket{00}+\ket{01}\right)\right]\). The state \(\ket{\psi_2}\), after applying the Hadamard gate to the arbitrary qubit is given by equation \ref{eq:11}.
 \begin{equation}\label{eq:11}
 \ket{\psi_2}=\dfrac{1}{2}\left[\ket{00}\left(\alpha\ket{0}+\beta\ket{1}\right)+\ket{01}\left(\alpha\ket{1}+\beta\ket{0}\right)+\ket{10}\left(\alpha\ket{0}-\beta\ket{1}\right)+\ket{11}\left(\alpha\ket{1}-\beta\ket{0}\right)\right]
 \end{equation}
@@ -538,7 +539,7 @@ This algorithm is in accordance with the no-cloning theorem and does not copy th
 
 \subsection{Grover's Search Algorithm}
 \label{sec:groverAlgo}
-Consider a database with N entries of bit strings without any well defined structure. This database contains a bit string \(x_1\) such that f(\(x_1\))=1. For all other bit strings in the database f(x)=0. In the worst case, best known classical algorithms require to scan all the entries in the database to find \(x_1\) resulting in the complexity of O(N). Grover's search algorithm solves this problem with a quadratic speedup over the classical algorithms.\\
+Consider a database with N entries of bit strings without any well defined structure. This database contains a bit string \(x_1\) such that f(\(x_1\))=1. For all other bit strings in the database f(x)=0. In the worst case, best known classical algorithms require to scan all the entries in the database to find \(x_1\) resulting in the complexity of O(N). Grover's search algorithm solves the same problem with O(\(\sqrt{N}\)) operations which achieves a quadratic speedup over the classical algorithms.\\
 
 \begin{figure}[H]
     \centering
@@ -626,7 +627,7 @@ Microsoft is one among many organizations which are actively investing in the fu
 \label{sec:motvQdk}
 
 \begin{itemize}
-    \item Microsoft has collaborated with multiple quantum hardware providers to develop quantum solutions. These companies work on different type of technology for realizing a quantum computer such as Ion Traps, Superconducting Qubits and Topological quantum hardware. However, the quantum development kit abstracts the details of underlying hardware and lets the application developers focus on the problem at hand.
+    \item Microsoft has collaborated with multiple quantum hardware providers to develop quantum solutions. These companies work on different type of technologies for realizing a quantum computer such as Ion Traps, Superconducting Qubits and Topological quantum hardware. However, the quantum development kit abstracts the details of underlying hardware and lets the application developers focus on the problem at hand.
     
     \item The Q\# programming language which is part of QDK, is inspired from other high level classical computer programming languages and has a similar syntax for writing programs. This makes learning Q\# easier from traditional high level language programmers.
     
@@ -645,7 +646,7 @@ Microsoft is one among many organizations which are actively investing in the fu
 \label{sec:qSharp}
 A Q\# program gives a way to interact with qubits and alter the state of those qubits by remaining agnostic about the hardware details of these interactions \cite{cjgronlund_microsoft}. A typical Q\# program consists of \emph{operations} to perform quantum operations, \emph{functions} to perform deterministic classical operations and user defined \emph{types}. Code given below shows an example of a simple operation which creates an array of random numbers using specified number of qubits.
 
-The operation is named GetRandomArray and has a single input parameter named number of built in primitive type Int.  Line 1 also gives the return type of the operation as Int[] - an array of integers. Line 2 assigns the input parameter to local variable named length. The keyword let defines an immutable variable which can not be changed in the later part of the program. Line 3 defines a mutable variable named result of type integer array with length specified by the input parameter. A for loop runs for given number of iterations and creates qubit on line 6 in the zero basis state. Line 8 applies Hadamard gate using the H operation on the qubit to create equal superposition state. The M operation on line 9 measures this qubit to provide a classical result of either One or Zero. This result is then stored in the output array and returned to calling program.
+The operation is named GetRandomArray and has a single input parameter named 'number' of built in primitive type Int.  Line 1 also gives the return type of the operation as Int[] - an array of integers. Line 2 assigns the input parameter to local variable named length. The keyword let defines an immutable variable which can not be changed in the later part of the program. Line 3 defines a mutable variable named result of type integer array with length specified by the input parameter. A for loop runs for given number of iterations and creates qubit on line 6 in the zero basis state. Line 8 applies Hadamard gate using the H operation on the qubit to create equal superposition state. The M operation on line 9 measures this qubit to provide a classical result of either One or Zero. This result is then stored in the output array and returned to calling program.
 
 \begin{lstlisting}[caption={Example of Q\# Operation}]
 operation GetRandomArray(number : Int) : Int[]{
@@ -676,7 +677,7 @@ operation GetRandomArray(number : Int) : Int[]{
 
 Microsoft Quantum Documentation provides detailed information about the features of the Q\# programming language. The quantum program can be called from a host program written in python or any dot net language such as C\#. The full state quantum simulator can be used to execute the quantum subroutine on a classical hardware. Microsoft QDK also provides a resource estimator which gives an estimate of required resources for executing given quantum algorithm.
 
-For learning quantum computing in general with the Q\# language, this documentation also includes code samples known as Quantum Katas. It has implementation examples of basic concepts like quantum superposition and entanglement. Also it includes sample programs for popular quantum algorithms along with their explanations.
+For learning quantum computing in general with the Q\# language, this documentation also includes code samples known as Quantum Katas \cite{mykhailova_2020_microsoftquantumkatas}. It has implementation examples of basic concepts like quantum superposition and entanglement. Also it includes sample programs for popular quantum algorithms along with their explanations.
 
 %%%%%%%%
 \chapter{Design}
@@ -685,7 +686,7 @@ This chapter discusses the design of the proposed solution. Decision choices of 
 
 \section{Dataset}
 \label{sec:dataset}
-In machine learning data classification task involves training a model based on given features to predict class of any unknown data sample. Binary classification predicts two separate classes for any given data point while a multi-class classification involves placing data points in more than two classes of labels. This dissertation focuses on binary classification of hand-written images. 
+In supervised machine learning data classification task involves training a model based on given features to predict class of any unknown data sample. Binary classification predicts two separate classes for any given data point while a multi-class classification involves placing data points in more than two classes of labels. This dissertation focuses on binary classification of hand-written images. 
 
 MNIST database \cite{kussul_2004_improved} of hand-written digit images is selected for the research. This database contains images of dimensions 28x28 pixels with grey level value of each pixel specified by a number from 0 to 255. This dataset needs to be pre-processed before using it for data classification. If formatted properly, the developed solution is completely agnostic of the input data dimensions and can work with any kind of database. MNIST database is a well known set of images which can be used for bench-marking the performance of machine learning algorithms for data classification. Figure \ref{fig:mnistEg} shows an example of digits 3 and 6 in the MNIST database.
 
@@ -749,7 +750,7 @@ Most quantum computers initialize a qubit in the $\ket{0}$ basis state. Quantum 
 Many quantum algorithms including the data classifier in Microsoft QDK use amplitudes of an arbitrary state of a qubit to encode classical information \cite{schuld_2020_circuitcentric}. This method is referred to as Amplitude Encoding. The data encoding component is a part of data classifier library which takes the classical data as input and using the state preparation circuit initializes amplitudes of a string of qubits to represent equivalent quantum information. An arbitrary state of qubit is represented in terms of phase as given below. The amplitudes of the qubit are expressed in terms of phase $\theta$.
 
 \begin{equation}\label{eq:13}
-    \ket{\psi} = cos\hspace{2}\dfrac{\theta}{2}\hspace{2}\ket{0} + e^i^\varphi \hspace{2}sin\hspace{2}\dfrac{\theta}{2}\hspace{2}\ket{1}
+    \ket{\psi} = cos\hspace{2pt}\dfrac{\theta}{2}\hspace{2pt}\ket{0} + e^{i\varphi} \hspace{2pt}sin\hspace{2pt}\dfrac{\theta}{2}\hspace{2pt}\ket{1}
 \end{equation}
 
 Quantum rotation gate can prepare any arbitrary state by taking the rotation angle as input. The state preparation circuit adjusts rotation parameter $\theta$ of combination of rotation gates to generate any arbitrary state using the values of input feature vector X = \{$x_1, x_2, x_3, ....., x_n$\}. As shown in table  \ref{tab:sampleImages}, we are given a set of 4 images. Each image has values for its 4 individual pixels and corresponding classification label. Consider the first image having 4 pixel values as 15, 44, 134 and 207. To encode these 4 values we need 4 amplitudes which can be represented by a 2 qubit register. The state of a 2 qubit register can be given by \(\ket{\psi}=\alpha\ket{00} + \beta\ket{01} + \gamma\ket{10} + \delta\ket{11}\) where \(\alpha\), \(\beta\), \(\gamma\), \(\delta\) are the amplitudes of the basis states and \(\alpha^2 + \beta^2 + \gamma^2 + \delta^2 = 1\). We can normalize the feature vector by dividing each value by the total sum. Here the sum = 15 + 44 + 134 + 207 = 400. Dividing each feature value by 400 gives us squares of amplitudes of the 2-qubit state vector. Hence amplitude values can be specified by \(\alpha^2\) = 0.0375, \(\beta^2\) = 0.11, \(\gamma^2\) = 0.335 and \(\delta^2\) = 0.5175. By adjusting parameters of a 2x2 unitary gate in the state preparation circuit the 2-qubit arbitrary state can be prepared with the required amplitude values.
@@ -774,7 +775,7 @@ Quantum rotation gate can prepare any arbitrary state by taking the rotation ang
 \label{tab:sampleImages}
 \end{table}
 
-The state preparation circuit requires the count of values N, in the feature vector to be an exact power of 2. In a real world dataset this is achieved by choosing padding such that \(N^'\) = N + D and \(N^'\) is some exact power of 2 \cite{schuld_2020_circuitcentric}. This is similar to having more nodes in the first hidden layer of a neural network than the previous layer. Amplitude encoding method requires poly-logarithmic quantum resources with respect to the input sample size and is suitable for near-term quantum hardware. The state preparation circuit can be thought of as a black box which encodes the input feature vector into amplitudes of quantum state as shown in figure .
+The state preparation circuit requires the count of values N, in the feature vector to be an exact power of 2. In a real world dataset this is achieved by choosing padding such that \(N^{'} = N + D\) and \(N^{'}\) is some exact power of 2 \cite{schuld_2020_circuitcentric}. This is similar to having more nodes in the first hidden layer of a neural network than the previous layer. Amplitude encoding method requires poly-logarithmic quantum resources with respect to the input sample size and is suitable for near-term quantum hardware. The state preparation circuit can be thought of as a black box which encodes the input feature vector into amplitudes of quantum state as shown in figure .
 
 \begin{figure}[H]
     \centering
@@ -784,9 +785,9 @@ The state preparation circuit requires the count of values N, in the feature vec
 \end{figure}
 
 \subsection{Gradient Calculation}
-Classical machine learning algorithms depend on gradient descent calculation \cite{bottou_2010_largescale} for reducing the error in predictions and incremental learning. Each feature is associated with its corresponding parameter which decides the weight of the feature in prediction of labels. Gradient descent algorithm takes partial derivatives of the cost function with respect to each individual parameter to update the parameters gradually with specified learning rate to minimize prediction error. Cost optimization algorithms converge to an optimum value beyond which there is no significant improvement is achieved in the prediction error by applying the gradient descent calculation. Parameter vector learned by this method is then used for prediction of labels on unknown data with same features.
+Classical machine learning algorithms depend on gradient descent calculation \cite{bottou_2010_largescale} for reducing the error in predictions and incremental learning. Each feature is associated with its corresponding parameter which decides the weight of the feature in prediction of labels. Gradient descent algorithm takes partial derivatives of the cost function with respect to each individual parameter to update the parameters gradually with specified learning rate to minimize prediction error. Cost optimization algorithms converge to an optimum value beyond which there is no significant improvement achieved in the prediction error by applying the gradient descent calculation. Parameter vector learned by this method is then used for prediction of labels on unknown data with same features.
 
-Similar to the classical machine learning method, the classification algorithm in quantum development kit uses gradient descent calculations \cite{schuld_2020_circuitcentric} to incrementally learn parameters for data classification. The n qubit register is prepared in a quantum state by the state preparation circuit to represent the input feature vector. The gradient calculation circuit takes this encoded state \(\ket{\psi}\) of n qubits as input and maps it to another quantum state \(\ket{\psi}^'\) such that \(\ket{\psi}^'\) = \(U_\theta \ket{\psi}\). Here \(U_\theta\) represents an unitary operation which can be decomposed into individual logical quantum gates and implemented on a quantum hardware.
+Similar to the classical machine learning method, the classification algorithm in quantum development kit uses gradient descent calculations \cite{schuld_2020_circuitcentric} to incrementally learn parameters for data classification. The n qubit register is prepared in a quantum state by the state preparation circuit to represent the input feature vector. The gradient calculation circuit takes this encoded state \(\ket{\psi}\) of n qubits as input and maps it to another quantum state \(\ket{\psi}^{'}\) such that \(\ket{\psi}^{'}\) = \(U_{\theta} \ket{\psi}\). Here \(U_{\theta}\) represents an unitary operation which can be decomposed into individual logical quantum gates and implemented on a quantum hardware.
 
 \begin{figure}[H]
     \centering
@@ -805,7 +806,7 @@ e^{i\beta}\hspace{2pt}cos\hspace{2pt}\alpha & e^{i\gamma}\hspace{2pt}sin\hspace{
 \end{bmatrix}
 \end{equation}
 
-Similarly a 2-qubit controlled gate can be represented by the matrix given in the equation \ref{eq:15}. This representation shows that even 2-qubit gates have 3 learnable parameters \(\alpha\), \(\beta\) and \(\gamma\). These multi qubit gates are useful to break the symmetry of dependency between variables introduced by the single qubit gates. 
+Similarly a 2-qubit controlled gate can be represented by the matrix given in the equation \ref{eq:15}. This representation shows that even 2-qubit gates have 3 learnable parameters \(\alpha\), \(\beta\) and \(\gamma\). These multi qubit gates are useful to break the symmetry of dependency between variables introduced by the single qubit gates \cite{schuld_2020_circuitcentric}. 
 
 \begin{equation}\label{eq:15}
 C_1(G_0) = \begin{bmatrix}
@@ -816,7 +817,7 @@ C_1(G_0) = \begin{bmatrix}
 \end{bmatrix}
 \end{equation}
 
-Figure \ref{fig:gateBlocks} shows blocks of different entangling layers of gates in a quantum classifier working on a 8-qubit register. The given circuit contains total 33 gates each with 3 controllable parameters. Microsoft quantum development kit currently provides 3 different type of controlled rotation layers namely LocalRotationsLayer, PartialRotationsLayer and CyclicEntanglingLayer. Various combinations of these layers can be added to the classifier architecture to achieve desired results in data classification tasks. This architecture model of data classifier provides various control parameters which can be varied to improve the performance. These control parameters include factors such as number of layers in the architecture, number of qubits acted on by given layer, rotation axis and range of connection between qubits. In the circuit shown below, range of conncetion is 1 for the layer B1 and 3 for the layer B3.  Other controllable hyper-parameters are learning rate, number of epochs, batch size of input feature vector and number of measurements of the prediction qubit.
+Figure \ref{fig:gateBlocks} shows blocks of different entangling layers of gates in a quantum classifier working on a 8-qubit register. The given circuit contains total 33 gates each with 3 controllable parameters. Microsoft quantum development kit currently provides 3 different type of controlled rotation layers namely LocalRotationsLayer, PartialRotationsLayer and CyclicEntanglingLayer. Various combinations of these layers can be added to the classifier architecture to achieve desired results in data classification tasks. This architecture model of data classifier provides various control parameters which can be varied to improve the performance. These control parameters include factors such as number of layers in the architecture, number of qubits acted on by given layer, rotation axis and range of connection between qubits. In the circuit shown below, range of connection is 1 for the layer B1 and 3 for the layer B3.  Other controllable hyper-parameters are learning rate, number of epochs, batch size of input feature vector and number of measurements of the prediction qubit.
 
 \begin{figure}[H]
     \centering
@@ -1102,7 +1103,7 @@ As discussed in the challenges section this research had multiple limitations wh
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \nocite{}
-\bibliographystyle{plain}
+\bibliographystyle{IEEEtran}
 \bibliography{ReferenceList}
 
 \appendix
@@ -1143,4 +1144,7 @@ As discussed in the challenges section this research had multiple limitations wh
     \emph{Thanks for raising this, @J1990! We'll look at how to add more examples of using those QML library functions in API documentation. As a side note, you may also be interested in the feature at:} \url{https://github.com/microsoft/iqsharp/pull/231}
     \end{displayquote}
 \end{itemize}
+
+\pagebreak
+\let\clearpage\relax
 \end{document}
